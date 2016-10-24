@@ -1,0 +1,63 @@
+<!--
+  Generated template for the VideoCards page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+	<ion-navbar>
+		<ion-title>Vídeos</ion-title>
+
+
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+	<ion-card *ngFor="let video of videos, let i = index">
+
+
+		<ion-card-content>
+			<img class="container" [src]="video.thumbnailURI" />
+
+			<ion-card-title>
+				{{video.timeStamp}}
+			</ion-card-title>
+			<p>
+				{{video.desc}}
+			</p>
+		</ion-card-content>
+
+		<ion-row no-padding>
+
+
+			<ion-col text-left>
+				<button ion-button clear small color="danger" icon-left (click)="editVideo(video, i)">
+          <ion-icon name='create'></ion-icon>
+          Editar
+        </button>
+			</ion-col>
+			<ion-col text-right>
+				<button ion-button clear small color="danger" icon-left (click)="removeVideo(video.id, i)">
+          <ion-icon name='trash'></ion-icon>
+          Remover
+        </button>
+			</ion-col>
+		</ion-row>
+	</ion-card>
+
+
+
+	<h5 *ngIf="videos.length == 0" class="centered"> Nenhum vídeo adicionado. Comece a gravar no botão abaixo. </h5>
+
+
+
+	<ion-fab center bottom (click)="addVideo()">
+		<button ion-fab><ion-icon name="add"></ion-icon></button>
+
+	</ion-fab>
+
+</ion-content>
